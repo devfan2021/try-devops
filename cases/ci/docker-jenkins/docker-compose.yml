@@ -1,0 +1,19 @@
+version: "3"
+services:
+  docker_jenkins:
+    restart: always
+    build: .
+    image: xrksudy.jenkins
+    container_name: xrksudy.jenkins
+    ports:
+      - "9090:8080"
+      - "50000:50000"
+    environment:
+      - JENKINS_UI_URL=http://127.0.0.1:9090/
+    volumes:
+      - /etc/localtime:/etc/localtime ## 同步时间
+      - "${JENKINS_HOME}:/var/jenkins_home"
+      - "${JENKINS_DEPLOY}:/var/www"
+      - /var/run/docker.sock:/var/run/docker.sock
+      # 将宿主机的 Docker 程序挂载到 Jenkins 容器内部
+      - /usr/bin/docker:/usr/bin/docker:ro

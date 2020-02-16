@@ -1,0 +1,16 @@
+version: "3"
+services:
+  es-logstash:
+    container_name: xrksudy-es-logstash
+    image: docker.elastic.co/logstash/logstash:${ELK_VERSION}
+    restart: always
+    ports:
+      - "9020:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    volumes:
+      - ${LOGSTASH_CONFIG_DIR}/logstash.yml:/usr/share/logstash/config/logstash.yml:rw
+      - ${LOGSTASH_CONFIG_DIR}/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:rw
+      - ./movies.csv:/usr/share/logstash/movies.csv:rw
+    networks:
+      - default

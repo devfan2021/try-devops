@@ -1,0 +1,18 @@
+version: "3"
+services:
+  es-slave2:
+    container_name: xrksudy-es-data2
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELK_VERSION}
+    restart: always
+    ports:
+      - 9008:9008
+      - 9009:9009
+    volumes:
+      - ./es-data2.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ${ES_DATA}:/usr/share/elasticsearch/data
+      - ${ES_LOG}:/usr/share/elasticsearch/logs
+      - ../es-plugin/:/usr/share/elasticsearch/plugins/
+    environment:
+      - "ES_JAVA_OPTS=-Xms5g -Xmx5g"
+    networks:
+      - default

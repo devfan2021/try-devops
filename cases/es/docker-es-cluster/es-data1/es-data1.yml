@@ -1,0 +1,120 @@
+# ======================== Elasticsearch Configuration =========================
+#
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+#       Before you set out to tweak and tune the configuration, make sure you
+#       understand what are you trying to accomplish and the consequences.
+#
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please consult the documentation for further information on configuration options:
+# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+# 集群名称
+cluster.name: xrksudy-es-cluster
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+# 节点名称
+node.name: xrksudy-es-node1
+# 启用node.master角色
+node.master: true
+# 启用node.data角色
+node.data: true
+# 禁用node.ingest角色
+node.ingest: false
+# 禁用node.ml角色
+#node.ml: false
+#xpack.ml.enabled: true
+# 禁用跨群集搜索
+#cluster.remote.connect: false
+#
+# Add custom attributes to the node:
+#
+#node.attr.rack: r1
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+#path.data: /path/to/data
+#
+# Path to log files:
+#
+#path.logs: /path/to/logs
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+#bootstrap.memory_lock: true
+#
+# Make sure that the heap size is set to about half the memory available
+# on the system and that the owner of the process is allowed to use this
+# limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+# 网络绑定
+network.host: 0.0.0.0
+network.publish_host: xxx.xxx.xxx.133
+#
+# Set a custom port for HTTP:
+# 设置对外服务的http端口
+http.port: 9008
+# 设置节点间交互的tcp端口
+transport.tcp.port: 9009
+#
+# For more information, consult the network module documentation.
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when this node is started:
+# The default list of hosts is ["127.0.0.1", "[::1]"]
+# 集群发现
+discovery.seed_hosts:
+  - xxx.xxx.xxx.xxx.130
+  - xxx.xxx.xxx.xxx.132
+  - xxx.xxx.xxx.xxx.133
+  - xxx.xxx.xxx.xxx.134
+#
+# Bootstrap the cluster using an initial set of master-eligible nodes:
+# 手动指定可以成为 mater 的所有节点的 name 或者 ip，这些配置将会在第一次选举中进行计算
+cluster.initial_master_nodes:
+  - xrksudy-es-master
+#  - xrksudy-es-node1
+#  - xrksudy-es-node2
+#  - xrksudy-es-ingest
+#
+# For more information, consult the discovery and cluster formation module documentation.
+#
+# ---------------------------------- Gateway -----------------------------------
+#
+# Block initial recovery after a full cluster restart until N nodes are started:
+#
+#gateway.recover_after_nodes: 2
+#
+# For more information, consult the gateway module documentation.
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Require explicit names when deleting indices:
+#
+#action.destructive_requires_name: true
+
+# 支持跨域访问
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+xpack.license.self_generated.type: basic
+
+# 安全认证
+xpack.security.enabled: false
+#http.cors.allow-headers: "Authorization"

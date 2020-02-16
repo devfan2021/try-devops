@@ -1,0 +1,129 @@
+yum install java
+yum install maven
+
+
+# cd /etc/yum.repo.d/
+# curl -o epel-7.repo http://mirrors.aliyun.com/repo/epel-7.repo
+# yum install -y python36 python36-setuptools
+# easy_install-3.6 pip
+
+# alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+# alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+
+# mv /usr/bin/pip /usr/bin/pip.bak    //原有的pip不是软连接，先把它干掉
+# alternatives --install /usr/bin/pip pip /usr/bin/pip2.7 1
+# alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.6 2
+
+# alternatives --display python
+# alternatives --config python
+
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+yum install nodejs
+
+# https://www.runoob.com/docker/centos-docker-install.html
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+sudo yum makecache fast
+sudo yum -y install docker-ce
+sudo systemctl start docker
+
+
+# https://qizhanming.com/blog/2018/08/06/how-to-install-nginx-on-centos-7
+sudo yum install nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+sudo systemctl restart nginx
+sudo systemctl reload nginx
+
+
+
+yum groupinstall "Development Tools"
+yum install -y gcc g++ kernel-devel  
+
+
+
+后续yum问题
+当切换成Python3以后发现yum命令不能用了,一执行就会报错:
+
+# yum
+  File "/usr/bin/yum", line 30
+    except KeyboardInterrupt, e:
+                            ^
+SyntaxError: invalid syntax
+这是因为系统yum命令使用的还需要使用Python2,分别修改/usr/libexec/urlgrabber-ext-down和/usr/bin/yum文件
+
+# vi /usr/libexec/urlgrabber-ext-down
+# vi /usr/bin/yum
+首行的#! /usr/bin/python
+都改为#! /usr/bin/python2.7
+--------------------- 
+
+
+## 修改Docker本地镜像与容器的存储位置的方法
+* systemctl restart docker 或者 service docker stop
+* mv /var/lib/docker /root/data/docker
+* ln -s /root/data/docker /var/lib/docker
+
+
+## 安装依赖包
+* yum groupinstall "Development Tools"
+
+
+mvn clean
+mvn package docker:build
+
+
+## 安装redis客户端
+* yum install -y gcc wget
+cd /tmp
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+
+make
+#make MALLOC=libc
+
+cp src/redis-cli /usr/bin/
+
+## redis 连接操作
+* redis-cli -h 127.0.0.1 -p 6379
+* auth 密码
+* keys  select 0  exists key
+
+### mongodb安装教程
+* https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
+* https://juejin.im/post/5cbe73f86fb9a0320b40d687
+
+
+### mongodb docker
+db-mongo:
+  image: mongo:3.6-jessie
+  container_name: db-mongo
+  networks:
+    - _network name_
+  volumes:
+    - ./db-notes-mongo:/data/db
+    - ./mongod.conf:/etc/mongod.conf
+  command: mongod --config /etc/mongod.conf
+
+db-mongo-admin:
+    image: mongo-express
+    container_name: db-mongo-admin
+    networks:
+        - _network name_
+    environment:
+        ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
+        ME_CONFIG_BASICAUTH_USERNAME: user
+        ME_CONFIG_BASICAUTH_PASSWORD: fairlylongpassword
+        ME_CONFIG_MONGODB_SERVER: some-mongo

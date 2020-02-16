@@ -1,0 +1,32 @@
+version: "3"
+services:
+  es-head:
+    container_name: xrksudy.es-head
+    image: mobz/elasticsearch-head:5
+    restart: always
+    ports:
+      - 9010:9100
+    networks:
+      - default
+
+  kibana:
+    container_name: xrksudy.kibana
+    image: docker.elastic.co/kibana/kibana:${ELK_VERSION}
+    environment:
+      - elasticsearch.hosts=http://xxx.xxx.xxx.130:9008
+    ports:
+      - "9009:5601"
+    volumes:
+      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+    networks:
+      - default
+
+  cerebro:
+    container_name: xrksudy.cerebro
+    image: lmenezes/cerebro:0.8.4
+    ports:
+      - "9008:9000"
+    #command:
+    #  - -Dhosts.0.host=http://elasticsearch:9200
+    networks:
+      - default

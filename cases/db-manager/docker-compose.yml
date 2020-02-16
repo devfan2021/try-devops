@@ -1,0 +1,50 @@
+version: "3"
+services:
+  mysql-admin:
+    container_name: xrksudy.mysql-admin
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8001:80"
+    environment:
+      PMA_HOSTS: ${MYSQL_HOST}
+      PMA_PORT: ${MYSQL_PORT}
+      PMA_ABSOLUTE_URI: /mysql/
+      #PMA_USER: ${MYSQL_USER}
+      #PMA_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - db-net
+
+  mongo-express:
+    container_name: xrksudy.mongo-express
+    image: mongo-express
+    restart: always
+    ports:
+      - 8002:8081
+    environment:
+      ME_CONFIG_OPTIONS_EDITORTHEME: 3024-night
+      ME_CONFIG_MONGODB_SERVER: ${MONGO_HOST}
+      ME_CONFIG_SITE_BASEURL: /mongo-express/
+      ME_CONFIG_BASICAUTH_USERNAME: ${MONGO_BASICAUTH_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGO_BASICAUTH_PASSWORD}
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_USER_NAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_USER_PASSWORD}
+    networks:
+      - db-net
+
+  redis-commander:
+    container_name: xrksudy.redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOSTS=DMZ:${REDIS_HOST}:${REDIS_PORT}:0:${REDIS_PASSWORD},SF:${REDIS2_HOST}:${REDIS2_PORT}:0:${REDIS2_PASSWORD}
+      #- REDIS_PORT=${REDIS_PORT}
+      #- REDIS_PASSWORD=${REDIS_PASSWORD}
+      - HTTP_USER=${REDIS_BASICAUTH_USERNAME}
+      - HTTP_PASSWORD=${REDIS_BASICAUTH_PASSWORD}
+    ports:
+      - "8003:8081"
+
+networks:
+  db-net:
+    driver: bridge

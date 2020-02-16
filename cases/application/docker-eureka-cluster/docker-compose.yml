@@ -1,0 +1,37 @@
+version: "3"
+services:
+  eureka-server-master:
+    image: ascdc/jdk8
+    container_name: xrksudy.eureka-server-custer-master
+    restart: always
+    ports:
+      - 9001:9091
+    environment:
+      - EUREKA_URLS=${EUREKA_URLS_NODE2}
+      - "SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}"
+    volumes:
+      - ${NODE1_JAR_DEST}:/data/eureka-server.jar
+    entrypoint: java -Djava.security.egd=file:/dev/./urandom -jar /data/eureka-server.jar
+    networks:
+      - eureka-net
+
+  eureka-server-node:
+    image: ascdc/jdk8
+    container_name: xrksudy.eureka-server-custer-node
+    restart: always
+    ports:
+      - 9002:9091
+    environment:
+      - EUREKA_URLS=${EUREKA_URLS_NODE1}
+      - "SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}"
+    depends_on:
+      - eureka-server-master
+    volumes:
+      - ${NODE2_JAR_DEST}:/data/eureka-server.jar
+    entrypoint: java -Djava.security.egd=file:/dev/./urandom -jar /data/eureka-server.jar
+    networks:
+      - eureka-net
+
+networks:
+  eureka-net:
+    driver: bridge

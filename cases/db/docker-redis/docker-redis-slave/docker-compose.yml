@@ -1,0 +1,21 @@
+version: "3"
+services:
+  redis:
+    build: ./redis
+    image: xrksudy.redis-slave
+    container_name: xrksudy.redis-slave
+    # 指定镜像
+    # image: redis:4
+    ports:
+      # 端口映射
+      - 9005:6379
+    volumes:
+      # 目录映射
+      # - "${REDIS_DIR}/conf:/usr/local/etc/redis"
+      - "${REDIS_DIR}/data:/data"
+      # - "${REDIS_DIR}/log:/data"
+    #command:
+    # 执行的命令
+    # redis-server
+    networks:
+      - default

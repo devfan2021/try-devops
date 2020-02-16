@@ -1,0 +1,20 @@
+version: "3"
+services:
+  api-gateway:
+    image: ascdc/jdk8
+    container_name: xrksudy.api-gateway
+    restart: always
+    ports:
+      - 9000:9090
+    environment:
+      - EUREKA_URLS=${EUREKA_URLS}
+      - "SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}"
+    volumes:
+      - ${JAR_DEST}:/data/api-gateway.jar
+    entrypoint: java -Djava.security.egd=file:/dev/./urandom -jar /data/api-gateway.jar
+    networks:
+      - eureka-net
+
+networks:
+  eureka-net:
+    driver: bridge
