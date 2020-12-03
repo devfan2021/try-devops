@@ -76,10 +76,6 @@ SyntaxError: invalid syntax
 * ln -s /root/data/docker /var/lib/docker
 
 
-## 安装依赖包
-* yum groupinstall "Development Tools"
-
-
 mvn clean
 mvn package docker:build
 

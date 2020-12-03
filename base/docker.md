@@ -27,7 +27,7 @@ $ docker-compose --version
 * https://docs.docker.com/install/linux/docker-ce/binaries/
 * https://blog.csdn.net/u013058742/article/details/80075633
 
-## docker 潜移
+## docker 迁移
 
 
 ## docker镜像加速 https://yeasy.gitbooks.io/docker_practice/install/mirror.html
