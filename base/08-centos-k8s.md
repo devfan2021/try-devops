@@ -51,36 +51,7 @@ EOF
 
 #### 安装Docker
 
-* 安装docker依赖
-```
-yum install -y yum-utils device-mapper-persistent-data lvm2
-```
-
-* 修改Docker镜像源
-```
-yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-yum makecache fast
-```
-
-* 安装docker-ce
-```
-yum -y install docker-ce
-```
-
-* 修改Docker本地镜像与容器的存储位置
-```
-mv /var/lib/docker /mnt/docker-data
-ln -s /mnt/docker-data /var/lib/docker
-```
-
-* 启动docker服务
-```
-systemctl start docker
-service docker stop
-
-systemctl daemon-reload
-systemctl restart docker
-```
+* 参考[08-centos-docker.md](./08-centos-docker.md)
 
 #### 安装kubernetes
 
