@@ -1,6 +1,18 @@
 ### 安装kubernetes环境
 
 #### 安装基础环境
+
+* 修改主机名
+```
+hostnamectl set-hostname kubernetes01
+```
+
+* 修改/etc/hosts文件
+```
+# kubernetes-cluster
+10.5.0.206 kubernetes01
+```
+
 * 设置centos 可用的 kubernetes 国内软件源
 ```
 cat <<EOF > kubernetes.repo
@@ -19,6 +31,11 @@ EOF
 mv kubernetes.repo /etc/yum.repos.d
 ```
 
+* 关闭防火墙
+```
+systemctl stop firewalld && systemctl disable firewalld
+```
+
 * 关闭swap分区
 ```
 swapoff -a
@@ -32,7 +49,8 @@ sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig
 
 * 开启br_netfilter Kernel
 ```
-modprobe br_netfilter
+yum install -y bridge-utils.x86_64
+modprobe br_netfilter # 加载br_netfilter模块，使用lsmod查看开启的模块
 echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
 ```
 
@@ -42,6 +60,7 @@ cat <<EOF > /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 EOF
+sysctl --system  # 重新加载所有配置文件
 ```
 
 * 注释/etc/fstab中的UUID行
@@ -60,15 +79,20 @@ EOF
 sudo yum install -y kubectl-1.19.4.-0 kubeadm-1.19.4-0 kubelet-1.19.4-0
 ```
 
-
-
-* 启动服务
+* 设置自启动服务
 ```
-systemctl enable docker.service
 systemctl enable kubelet.service
+systemclt start kubelet
 ```
 
-* 设置自启动
+#### 调整cgroup-driver
+* 设置docker-ce和kubernetes为同一个‘cgroup’
 ```
-systemctl enable kubelet && systemctl start kubelet
+docker info | grep -i cgroup
+sed -i 's/cgroup-driver=systemd/cgroup-driver=cgroupfs/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ```
+
+
+ssh root@106.13.16.115
+
+851027CBm!@#

@@ -7,7 +7,9 @@
 * journalctl -xe
 
 ## 挂载文件系统
-* mount /dev/vdb1 /mnt
+* mount /dev/vdb1 /data
+* mount -o remount,rw /
+* /etc/fstab 中配置
 
 ## 查看磁盘情况
 * 查看磁盘：fdisk -l

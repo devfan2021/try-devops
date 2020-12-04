@@ -43,3 +43,21 @@ chmod +x docker-compose
 sudo mv docker-compose /usr/local/bin
 docker-compose --version
 ```
+
+#### 设置自启动服务
+```
+systemctl enable docker.service
+systemctl start docker
+```
+
+#### 配置镜像加速器
+```
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://uz2y6kfd.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
