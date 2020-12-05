@@ -8,7 +8,7 @@ curl -o epel-7.repo http://mirrors.aliyun.com/repo/epel-7.repo
 ### 环境安装命令
 * 安装软件
 ```
-yum -y install docker-ce
+yum install -y docker-ce
 ```
 
 * 列出已安装的软件包
@@ -24,7 +24,7 @@ yum remove xxx
 ### 安装开发环境
 * 命令补全工具
 ```
-yum -y install bash-completion
+yum install -y bash-completion
 source /etc/profile.d/bash_completion.sh
 ```
 * 开发工具包
@@ -37,6 +37,11 @@ yum install -y gcc g++ kernel-devel
 yum install java-1.8.0-openjdk-devel
 ```
 
+* 更新缓存
+```
+yum clean all
+yum -y makecache
+```
 
 ### 基础运维
 * 查看开机启动项

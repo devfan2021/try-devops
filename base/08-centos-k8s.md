@@ -20,8 +20,8 @@ cat <<EOF > kubernetes.repo
 name=Kubernetes
 baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
 enabled=1
-gpgcheck=0
-repo_gpgcheck=0
+gpgcheck=1
+repo_gpgcheck=1
 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
        http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
@@ -63,20 +63,30 @@ EOF
 sysctl --system  # 重新加载所有配置文件
 ```
 
-* 注释/etc/fstab中的UUID行
-```
-# UUID=b62d1910-e3e3-4425-9544-e7f467b7c7d4 /   ext4    defaults  1 1
-```
-
 #### 安装Docker
 
 * 参考[08-centos-docker.md](./08-centos-docker.md)
 
 #### 安装kubernetes
 
+#### 调整cgroup-driver
+* 设置docker-ce和kubernetes为同一个‘cgroup’
+修改daemon.json，新增‘"exec-opts": ["native.cgroupdriver=systemd"’
+```
+[root@master ~]# more /etc/docker/daemon.json 
+{
+  "registry-mirrors": ["https://v16stybc.mirror.aliyuncs.com"],
+  "exec-opts": ["native.cgroupdriver=systemd"]
+}
+```
+
 * 安装kubernetes相关软件
 ```
 sudo yum install -y kubectl-1.19.4.-0 kubeadm-1.19.4-0 kubelet-1.19.4-0
+```
+
+* 下载kubernetes相关组件的docker镜像
+```
 ```
 
 * 设置自启动服务
@@ -85,14 +95,35 @@ systemctl enable kubelet.service
 systemclt start kubelet
 ```
 
-#### 调整cgroup-driver
-* 设置docker-ce和kubernetes为同一个‘cgroup’
+* kubelet命令补全
 ```
-docker info | grep -i cgroup
-sed -i 's/cgroup-driver=systemd/cgroup-driver=cgroupfs/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+echo "source <(kubectl completion bash)" >> ~/.bash_profile
+source ~/.bash_profile
 ```
 
+* 下载kubernetes相关组件的docker镜像
+参考[k8s-pull-images.sh](./../k8s/k8s-pull-images.sh)
 
-ssh root@106.13.16.115
+* 使用kubeadm部署kubernetes集群master节点
+```
+kubeadm init --kubernetes-version=v1.19.4
+```
 
-851027CBm!@#
+执行成功后，执行以下语句拷贝相关配置文件
+```
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+* 健康状态检查
+```
+kubectl get cs      # 查看主要组件的健康状态
+kubectl get nodes   # 查看master节点状态
+```
+
+* 部署网络插件weave
+```
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+kubectl get pods -n kube-system -l name=weave-net -o wide  ## 查看Master节点上网络weave相关Pod的状态
+```
