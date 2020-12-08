@@ -5,6 +5,8 @@
 ## 查看服务状态
 * systemctl status docker.service
 * journalctl -xe
+* systemctl status kubelet
+* journalctl -xeu kubelet
 
 ## 挂载文件系统
 * mount /dev/vdb1 /data

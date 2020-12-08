@@ -51,7 +51,7 @@ sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig
 ```
 yum install -y bridge-utils.x86_64
 modprobe br_netfilter # 加载br_netfilter模块，使用lsmod查看开启的模块
-echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables  # 修改当前内核状态
 ```
 
 * centos7用户还需要设置路由
@@ -82,17 +82,13 @@ sysctl --system  # 重新加载所有配置文件
 
 * 安装kubernetes相关软件
 ```
-sudo yum install -y kubectl-1.19.4.-0 kubeadm-1.19.4-0 kubelet-1.19.4-0
-```
-
-* 下载kubernetes相关组件的docker镜像
-```
+yum install -y kubectl-1.19.4.-0 kubeadm-1.19.4-0 kubelet-1.19.4-0
 ```
 
 * 设置自启动服务
 ```
 systemctl enable kubelet.service
-systemclt start kubelet
+systemctl start kubelet
 ```
 
 * kubelet命令补全
@@ -112,8 +108,8 @@ kubeadm init --kubernetes-version=v1.19.4
 执行成功后，执行以下语句拷贝相关配置文件
 ```
 mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 * 健康状态检查
