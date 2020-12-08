@@ -2,8 +2,14 @@
 ```
 minikube version
 minikube start
+minikube status               ## 查看状态
+minikube service list         ## 查看服务列表
 
-minikube service hello-node   ### 启动服务
+minikube service hello-node   ## 启动服务
+```
+
+```
+minikube docker-env           ## minikube 虚拟机的 docker 环境变量
 ```
 
 ## kubernetes命令汇总
@@ -30,16 +36,18 @@ kubectl get services -l app=hello-node
 
 ### kubectl get - 列出资源
 ```
-kubectl get pods      ## 查看所有pod列表
-kubectl get rc        ## 查看rc列表
-kubectl get services  ## 查看service列表
+kubectl get pods                       ## 查看所有pod列表
+kubectl get pods --all-namespaces      ## 查看所有pod列表
+kubectl get rc                         ## 查看rc列表
+kubectl get services                   ## 查看service列表
+kubectl get node -o wide               ## 集群节点信息
 ```
 
 ### kubectl describe - 显示资源详情
 ```
-kubectl describe nodes [node名]   ## 显示node的详细信息
-kubectl describe pods/[pod名]     ## 显示pod的详细信息
-kubectl describe pods [rc名]      ## 显示由RC管理的pod的信息
+kubectl describe nodes [node名]        ## 显示node的详细信息
+kubectl describe pods/[pod名]          ## 显示pod的详细信息
+kubectl describe pods [rc名]           ## 显示由RC管理的pod的信息
 ```
 
 ### kubectl exec - 向pod中的容器执行命令
@@ -53,4 +61,22 @@ kubectl exec -it <pod名> -c <容器名>  /bin/bash   ## #登录容器执行命�
 ```
 kubectl logs <pod名>                   ## 查看容器输出到stdout的日志
 kubectl logs -f <pod名> -c <容器名>     ## 跟踪查看容器的日志，相当于tail -f命令的结果
+```
+
+## 开启Kubernetes dashboard
+```
+minikube dashboard
+```
+
+## 服务实例命令
+```
+kubectl create deployment hello-minikube --image=registry.cn-hangzhou.aliyuncs.com/google_containers/echoserver:1.14  ## 创建部署
+kubectl expose deployment hello-minikube --type=NodePort --port=8080                                                  ## 将部署暴露为服务
+kubectl get pod                                                                                                       ## 查看服务
+minikube service hello-minikube --url                                                                                 ## 获取服务URL
+kubectl delete services hello-minikube                                                                                ## 删除服务
+kubectl delete deployment hello-minikube                                                                              ## 删除部署
+minikube stop                                                                                                         ## 停止Minikube集群
+minikube delete                                                                                                       ## 删除Minikube集群
+minikube dashboard                                                                                                    ## 查看仪表盘
 ```
