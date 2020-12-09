@@ -15,19 +15,33 @@ yum makecache fast
 
 * 安装docker-ce
 ```
+yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+
+yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+yum makecache fast
 yum install -y docker-ce
 ```
 
 * 修改Docker本地镜像与容器的存储位置
 ```
-mv /var/lib/docker /mnt/docker-data
-ln -s /mnt/docker-data /var/lib/docker
+mv /var/lib/docker /data/docker-data
+ln -s /data/docker-data /var/lib/docker
 ```
 
 * 启动docker服务
 ```
 systemctl start docker
-service docker stop
+systemctl stop docker
 
 systemctl daemon-reload
 systemctl restart docker

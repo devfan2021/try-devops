@@ -11,7 +11,8 @@
 ## 挂载文件系统
 * mount /dev/vdb1 /data
 * mount -o remount,rw /
-* /etc/fstab 中配置
+* sudo blkid    ### 查看分区的UUID
+* 在/etc/fstab 中配置分区信息
 
 ## 查看磁盘情况
 * 查看磁盘：fdisk -l
