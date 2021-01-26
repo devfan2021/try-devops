@@ -100,11 +100,11 @@ sudo systemctl start docker
 
 
 # https://qizhanming.com/blog/2018/08/06/how-to-install-nginx-on-centos-7
-sudo yum install nginx
-sudo systemctl enable nginx
-sudo systemctl start nginx
-sudo systemctl restart nginx
-sudo systemctl reload nginx
+yum install nginx
+systemctl enable nginx
+systemctl start nginx
+systemctl restart nginx
+systemctl reload nginx
 
 
 

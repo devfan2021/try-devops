@@ -41,6 +41,7 @@ kubectl get pods --all-namespaces      ## 查看所有pod列表
 kubectl get rc                         ## 查看rc列表
 kubectl get services                   ## 查看service列表
 kubectl get node -o wide               ## 集群节点信息
+kubectl api-resources                  ## 查询资源类型
 ```
 
 ### kubectl describe - 显示资源详情
@@ -79,4 +80,29 @@ kubectl delete deployment hello-minikube                                        
 minikube stop                                                                                                         ## 停止Minikube集群
 minikube delete                                                                                                       ## 删除Minikube集群
 minikube dashboard                                                                                                    ## 查看仪表盘
+```
+
+## kubectl命令解释
+```
+kubectl [command] [TYPE] [NAME] [flags]
+```
+* Where command, TYPE, NAME, and flags are:
+> * command: Specifies the operation that you want to perform on one or more resources, such as create, get, describe and delete.
+> * TYPE: Specifies the [resource type](https://kubernetes.io/docs/reference/kubectl/overview/#resource-types). Resource types are case-insensitive and you can specify the singular, plural, or abbreviated forms.
+> * NAME: Specifies the name of the resource. Names are case-sensitive. If the name is omitted, details for all resources are displayed, such as kubectl get pods.
+> * flags: Specifies optional flags. For example, you can use the -s or --server flags to specify the address and port of the Kubernetes API server.
+* If you need help, run kubectl help from the terminal window or refer to the Kubernetes kubectl CLI documentation.
+
+
+
+## 常用命令
+
+### 检查核心组件（例如etcd服务）的状态，并确保一切就绪
+```
+kubectl get nodes -l node-role.kubernetes.io/master
+```
+
+### 检查所有工作节点的状态
+```
+kubectl get nodes -l node-role.kubernetes.io/worker
 ```
