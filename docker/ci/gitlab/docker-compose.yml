@@ -2,16 +2,17 @@ version: "3"
 services:
   web:
     image: "gitlab/gitlab-ee:latest"
+    container_name: xrksudy.devops.gitlab
     restart: always
-    hostname: "gitlab.devfan.site"
+    hostname: "${GITLAB_WEB}"
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://gitlab.devfan.site:8090'
+        external_url 'http://gitlab.devfan.site:${GITLAB_WEB_PORT}'
         gitlab_rails['time_zone'] = 'Asia/Shanghai'
-        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+        gitlab_rails['gitlab_shell_ssh_port'] = ${GITLAB_SSH_PORT}
     ports:
-      - "8090:8090"
-      - "2224:22"
+      - "${GITLAB_WEB_PORT}:${GITLAB_WEB_PORT}"
+      - "${GITLAB_SSH_PORT}:22"
     volumes:
       - "$GITLAB_HOME/config:/etc/gitlab"
       - "$GITLAB_HOME/logs:/var/log/gitlab"

@@ -28,3 +28,7 @@
 * 查看磁盘：fdisk -l
 * 查看挂载：df -h
 * 显示磁盘空间的使用情况：du -sh
+
+## check current shell
+* ps -p $$  
+* echo $0
