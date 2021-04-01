@@ -93,6 +93,9 @@ kubectl [command] [TYPE] [NAME] [flags]
 > * flags: Specifies optional flags. For example, you can use the -s or --server flags to specify the address and port of the Kubernetes API server.
 * If you need help, run kubectl help from the terminal window or refer to the Kubernetes kubectl CLI documentation.
 
+## K8S卸载
+**kubeadm reset**  重置
+**rm -rf `$HOME/.kube`**  删除文件
 
 
 ## 常用命令

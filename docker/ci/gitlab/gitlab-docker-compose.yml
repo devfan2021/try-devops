@@ -1,0 +1,18 @@
+version: "3"
+services:
+  web:
+    image: "gitlab/gitlab-ee:latest"
+    restart: always
+    hostname: "gitlab.devfan.site"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.devfan.site:8090'
+        gitlab_rails['time_zone'] = 'Asia/Shanghai'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+    ports:
+      - "8090:8090"
+      - "2224:22"
+    volumes:
+      - "$GITLAB_HOME/config:/etc/gitlab"
+      - "$GITLAB_HOME/logs:/var/log/gitlab"
+      - "$GITLAB_HOME/data:/var/opt/gitlab"
