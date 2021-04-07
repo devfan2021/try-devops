@@ -9,6 +9,8 @@ services:
       - "9090:8080"
       - "50000:50000"
     environment:
+      - UID_JENKINS=${UID_JENKINS:-1000}
+      - GID_JENKINS=${GID_JENKINS:-1000}
       - JENKINS_UI_URL=http://127.0.0.1:9090/
     volumes:
       - /etc/localtime:/etc/localtime ## 同步时间

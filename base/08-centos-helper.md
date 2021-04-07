@@ -43,6 +43,11 @@ yum install java   ### 安装的是OpenJDK
 yum install maven
 ```
 
+* 安装git
+```
+yum install git
+```
+
 * 更新缓存
 ```
 yum clean all

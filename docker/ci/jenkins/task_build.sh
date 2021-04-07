@@ -11,14 +11,14 @@ rm -rf $project_name
 rm -rf $project_name.tar
 mv build $project_name
 tar -zcf $project_name.tar $project_name
-mv $project_name.tar /var/www/
+mv $project_name.tar /data/devops-data/jenkins-www
 
 if [ -d "/var/www/${project_name}" ]; then
 	time=`date '+%Y%m%d%H%M%S'`
-    mv /var/www/${project_name} /var/www/${project_name}_$time
+    mv /data/devops-data/jenkins-www/${project_name} /data/devops-data/jenkins-www/${project_name}_$time
 fi
 
-cd /var/www/
+cd /data/devops-data/jenkins-www
 tar -xf $project_name.tar
 rm -rf $project_name.tar
 
