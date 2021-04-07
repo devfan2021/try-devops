@@ -37,9 +37,10 @@ yum groupinstall "Development Tools"
 yum install -y gcc g++ kernel-devel  
 ```
 
-* OpenJDK
+* Java环境
 ```
-yum install java-1.8.0-openjdk-devel
+yum install java   ### 安装的是OpenJDK
+yum install maven
 ```
 
 * 更新缓存

@@ -1,7 +1,5 @@
 ### 安装kubernetes环境
 
-#### 安装基础环境
-
 * 修改主机名
 ```
 hostnamectl set-hostname kubernetes01

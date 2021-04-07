@@ -108,10 +108,6 @@ systemctl reload nginx
 
 
 
-yum groupinstall "Development Tools"
-yum install -y gcc g++ kernel-devel  
-
-
 
 后续yum问题
 当切换成Python3以后发现yum命令不能用了,一执行就会报错:

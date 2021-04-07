@@ -1,4 +1,4 @@
 #!/bin/bash
 
-mkdir -p /mnt/data/jenkins
-chown -R 1000:1000 /mnt/data/jenkins
+mkdir -p /data/devops-data/jenkins
+chown -R 1000:1000 /data/devops-data/jenkins

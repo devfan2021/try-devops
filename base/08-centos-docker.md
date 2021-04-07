@@ -1,5 +1,3 @@
-### 安装kubernetes环境
-
 #### 安装Docker
 
 * 安装docker依赖
@@ -10,7 +8,7 @@ yum install -y yum-utils device-mapper-persistent-data lvm2
 * 修改Docker镜像源
 ```
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-yum makecache fast
+yum -y makecache
 ```
 
 * 安装docker-ce
@@ -25,10 +23,6 @@ yum remove docker \
                   docker-selinux \
                   docker-engine-selinux \
                   docker-engine
-
-yum install -y yum-utils device-mapper-persistent-data lvm2
-yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-yum makecache fast
 yum install -y docker-ce
 ```
 
@@ -51,7 +45,7 @@ systemctl restart docker
 
 * 安装docker-compose
 ```
-DOCKER_COMPOSE_VERSION=1.18.0
+DOCKER_COMPOSE_VERSION=1.26.2
 curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
 chmod +x docker-compose
 mv docker-compose /usr/local/bin
