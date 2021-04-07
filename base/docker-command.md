@@ -27,6 +27,7 @@
 * **docker update --restart=no && docker stop** update and stop a container that is in a crash-loop
 * **docker exec -i -t /bin/bash** bash shell into container or use /bin/sh
 * **docker exec -i -t -u root /bin/bash** bash shell with root if container is running in a different user context
+* **docker exec -it [container_id_or_name/bb70afae9956] /bin/bash** bash shell into container
 
 #### resource usage
 

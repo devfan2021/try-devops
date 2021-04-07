@@ -6,4 +6,4 @@ services:
     ports:
       - "${NEXUS_PORT}:8081"
     volumes:
-      - "./nexus:${NEXUS_DATA_DIR}"
+      - "${NEXUS_DATA_DIR}:/nexus-data"
