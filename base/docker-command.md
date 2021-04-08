@@ -39,3 +39,6 @@
 * **docker image prune** a pretty safe command to clean up your local filesystem: remove local container images that are not used by any container and are not tagged.
 * **docker image prune -a**  clean up and delete all unused container images
 * **docker image prune -a --filter "until=24h"**  clean up container images that have been created over 24 hours ago run
+
+#### network
+* **docker inspect [container_id_or_name] -f "{{json .NetworkSettings.Networks }}"**  see what network(s) your container is on

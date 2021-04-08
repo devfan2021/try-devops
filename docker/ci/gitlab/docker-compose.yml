@@ -18,7 +18,7 @@ services:
       - "$GITLAB_HOME/logs:/var/log/gitlab"
       - "$GITLAB_HOME/data:/var/opt/gitlab"
     networks:
-      gitlabnetwork: {}
+      - gitlab-network
   gitlab-runner:
     image: gitlab/gitlab-runner:latest
     container_name: xrksudy.devops.gitlab.runner
@@ -29,9 +29,8 @@ services:
       - "${DOCKER_RUNNING_PATH}:/var/run/docker.sock"
       - "${GITLAB_RUNNER_CONFIG}:/etc/gitlab-runner"
     networks:
-      gitlabnetwork: {}
-# Use an attachable network shared by GitLab, the GitLab runner and
-# all the job containers.
+      - gitlab-network
+
 networks:
-  gitlabnetwork:
-    driver: overlay
+  gitlab-network:
+    name: gitlab-network
