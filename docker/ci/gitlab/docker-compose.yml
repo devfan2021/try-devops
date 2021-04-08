@@ -1,6 +1,6 @@
 version: "3"
 services:
-  web:
+  gitlab:
     image: "gitlab/gitlab-ce:latest"
     container_name: xrksudy.devops.gitlab
     restart: always
@@ -17,3 +17,21 @@ services:
       - "$GITLAB_HOME/config:/etc/gitlab"
       - "$GITLAB_HOME/logs:/var/log/gitlab"
       - "$GITLAB_HOME/data:/var/opt/gitlab"
+    networks:
+      gitlabnetwork: {}
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    container_name: xrksudy.devops.gitlab.runner
+    restart: always
+    ports:
+      - "${GITLAB_RUNNER_PORT}:8093"
+    volumes:
+      - "${DOCKER_RUNNING_PATH}:/var/run/docker.sock"
+      - "${GITLAB_RUNNER_CONFIG}:/etc/gitlab-runner"
+    networks:
+      gitlabnetwork: {}
+# Use an attachable network shared by GitLab, the GitLab runner and
+# all the job containers.
+networks:
+  gitlabnetwork:
+    driver: overlay
