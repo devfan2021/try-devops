@@ -35,3 +35,5 @@ gitlab-runner register \
 
 ## Gitlab CI/CD
 *[Building in Docker Containers on GitLab CE](https://www.ivankrizsan.se/2019/06/17/building-in-docker-containers-on-gitlab-ce/)
+*[How to deploy Maven projects to Artifactory with GitLab CI/CD](https://forge.etsi.org/rep/help/ci/examples/artifactory_and_gitlab/index.md)
+*[GitLab-CI Pipeline](https://ishitasinghal08.medium.com/gitlab-ci-pipeline-44996e611fe2)
