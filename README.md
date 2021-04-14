@@ -1,5 +1,9 @@
 ## 日志
 
+### 2021-04-14
+* 增加SonarQube部署相关配置
+* 与GitLab CI进行集成
+
 ### 2021-04-11
 * 调整redis目录
 * 采用docker run方式部署redis单实例
