@@ -1,0 +1,13 @@
+version: "3.6"
+services:
+  node-exporter:
+    image: bitnami/redis-exporter:latest
+      - ${REDIS_EXPORTER_PORT}:9121
+    command:
+      - "--redis.addr=redis://${REDIS_HOST}"
+      - "--redis.password=${REDIS_PASSWORD}"
+    networks:
+      - net-ne
+
+networks:
+  net-ne:
