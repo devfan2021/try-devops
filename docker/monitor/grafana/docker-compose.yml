@@ -1,0 +1,14 @@
+version: "3.6"
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: xrksudy.monitor.grafana
+    restart: always
+    ports:
+      - "${GRAFANA_PORT}:3000"
+    volumes:
+      - ${GRAFANA_HOME}:/var/lib/grafana
+    networks:
+      - net-prom
+    links:
+      - prometheus

@@ -1,8 +1,8 @@
 version: "3.6"
 services:
   prometheus:
-    container_name: xrksudy.monitor.prometheus
     image: prom/prometheus
+    container_name: xrksudy.monitor.prometheus
     restart: always
     ports:
       - "${PROMETHEUS_PORT}:9090"
