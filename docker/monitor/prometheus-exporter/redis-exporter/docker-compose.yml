@@ -2,6 +2,9 @@ version: "3.6"
 services:
   node-exporter:
     image: bitnami/redis-exporter:latest
+    container_name: xrksudy.monitor.redis-exporter
+    restart: always
+    ports:
       - ${REDIS_EXPORTER_PORT}:9121
     command:
       - "--redis.addr=redis://${REDIS_HOST}"
