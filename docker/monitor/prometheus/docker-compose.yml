@@ -1,10 +1,11 @@
+version: "3.6"
 services:
   prometheus:
     container_name: xrksudy.monitor.prometheus
     image: prom/prometheus
     restart: always
     ports:
-      - "${PROMETHEUS-PORT}:9090"
+      - "${PROMETHEUS_PORT}:9090"
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
     networks:
