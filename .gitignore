@@ -2,3 +2,4 @@
 account.md
 .env
 nginx-dev
+config.redis.json

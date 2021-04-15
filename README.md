@@ -1,8 +1,9 @@
 ## 日志
 
-### 2021-04-14
+### 2021-04-15
 * Prometheus部署
 * 增加采集主机的node-exporter
+* 增加采集redis的exporter
 
 ### 2021-04-14
 * 增加SonarQube部署相关配置

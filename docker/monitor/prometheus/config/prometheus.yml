@@ -20,7 +20,7 @@ rule_files:
 # Here it's Prometheus itself.
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
+  - job_name: "monitor_prometheus"
 
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
@@ -30,8 +30,12 @@ scrape_configs:
         labels:
           instance: prometheus
 
-  - job_name: "collect_yun_host"
+  - job_name: "monitor_yun_host"
     static_configs:
       - targets: ["${COLLECT_YUN_HOST}"]
         labels:
           instance: yun_cloud_host
+
+  - job_name: "monitor_redis"
+    file_sds_config:
+      - files: ["./config.redis.json"]
