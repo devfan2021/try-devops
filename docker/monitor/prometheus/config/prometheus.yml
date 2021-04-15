@@ -37,5 +37,7 @@ scrape_configs:
           instance: yun_cloud_host
 
   - job_name: "monitor_redis"
-    file_sds_config:
-      - files: ["./config.redis.json"]
+    static_configs:
+      - targets: ["${COLLECT_REDIS_HOST}"]
+        labels:
+          instance: db
