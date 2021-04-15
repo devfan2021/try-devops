@@ -26,6 +26,12 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ["localhost:9050"]
+      - targets: ["${PROMETHEUS_TARGET_HOST}"]
         labels:
           instance: prometheus
+
+  - job_name: "collect_yun_host"
+    static_configs:
+      - targets: ["${COLLECT_YUN_HOST}"]
+        label:
+          instance: yun_cloud_host

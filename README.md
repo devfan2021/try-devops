@@ -2,6 +2,7 @@
 
 ### 2021-04-14
 * Prometheus部署
+* 增加采集主机的node-exporter
 
 ### 2021-04-14
 * 增加SonarQube部署相关配置
