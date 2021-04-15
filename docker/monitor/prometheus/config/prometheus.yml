@@ -33,5 +33,5 @@ scrape_configs:
   - job_name: "collect_yun_host"
     static_configs:
       - targets: ["${COLLECT_YUN_HOST}"]
-        label:
+        labels:
           instance: yun_cloud_host
