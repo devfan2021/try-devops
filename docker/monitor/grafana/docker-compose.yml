@@ -10,5 +10,6 @@ services:
       - ${GRAFANA_HOME}:/var/lib/grafana
     networks:
       - net-prom
-    links:
-      - prometheus
+
+networks:
+  net-prom:

@@ -1,4 +1,13 @@
+## 待处理问题
+* 根目录下写一个脚本，统一管理各docker容器服务，避免启动所有服务，占用机器资源
+* 监控monitor下的prometheus下config，新增一个脚本，将.evn敏感信息写入prometheus.yml里
+
+
 ## 日志
+
+### 2021-04-16
+* 解决Grafana部署问题
+* 增加待处理问题列表
 
 ### 2021-04-15
 * Prometheus部署
