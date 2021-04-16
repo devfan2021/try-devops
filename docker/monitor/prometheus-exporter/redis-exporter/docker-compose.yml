@@ -7,7 +7,7 @@ services:
     ports:
       - ${REDIS_EXPORTER_PORT}:9121
     command:
-      - "--redis.addr=redis://${REDIS_HOST}"
+      - "--redis.addr=${REDIS_HOST}"
       - "--redis.password=${REDIS_PASSWORD}"
     networks:
       - net-ne
