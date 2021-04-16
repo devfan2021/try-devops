@@ -8,6 +8,7 @@
 ### 2021-04-16
 * 解决Grafana部署问题
 * 增加待处理问题列表
+* 加入开源的Grafana Dashboard
 
 ### 2021-04-15
 * Prometheus部署
