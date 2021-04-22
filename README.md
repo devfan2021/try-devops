@@ -7,6 +7,7 @@
 
 ### 2021-04-20
 * 采用docker部署mysql
+* 增加sofa-register官方部署包
 
 ### 2021-04-16
 * 解决Grafana部署问题
