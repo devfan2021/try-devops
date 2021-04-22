@@ -1,15 +1,12 @@
 version: "3"
 services:
   mysql:
-    container_name: xrksudy.mysql
+    container_name: xrksudy.mysql.stand-alone
     build: ./mysql
-    # image: mysql:5.7.22
     restart: always
     ports:
-      - 3306:3306
+      - ${MYSQL_PORT}:3306
     volumes:
-      # - ./mysql/conf/my.cnf:/etc/mysql/my.cnf:rw
-      # - "${MYSQL_DIR}/conf.d:/etc/mysql/conf.d"
       - "${MYSQL_DIR}/data:/var/lib/mysql"
       - "${MYSQL_DIR}/log:/var/log/mysql"
       # - "./init:/docker-entrypoint-initdb.d"  # 初始化数据

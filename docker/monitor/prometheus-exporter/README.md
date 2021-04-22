@@ -1,0 +1,2 @@
+云监控-Redis Exporter 接入.md
+https://github.com/tencentyun/qcloud-documents/blob/master/product/%E7%9B%91%E6%8E%A7%E4%B8%8E%E7%AE%A1%E7%90%86/%E4%BA%91%E7%9B%91%E6%8E%A7/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/Exporters%20%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/Redis%20Exporter%20%E6%8E%A5%E5%85%A5.md
