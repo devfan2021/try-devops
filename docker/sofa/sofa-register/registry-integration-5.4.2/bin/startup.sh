@@ -39,7 +39,7 @@ JAVA_OPTS="$JAVA_OPTS -XX:+DisableExplicitGC -XX:+PrintGCDetails -XX:+PrintGCDat
 JAVA_OPTS="$JAVA_OPTS -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=${BASE_DIR}/logs -XX:ErrorFile=${BASE_DIR}/logs/registry-${APP_NAME}-hs_err_pid%p.log"
 JAVA_OPTS="$JAVA_OPTS -XX:-OmitStackTraceInFastThrow -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=4"
 JAVA_OPTS="$JAVA_OPTS -XX:+CMSClassUnloadingEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70"
-JAVA_OPTS="$JAVA_OPTS -Dnetwork_interface_binding=eth0"
+# JAVA_OPTS="$JAVA_OPTS -Dnetwork_interface_binding=eth0"
 
 # rm raftData
 rm -rf ${BASE_DIR}/raftData/

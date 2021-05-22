@@ -37,3 +37,41 @@ gitlab-runner register \
 *[Building in Docker Containers on GitLab CE](https://www.ivankrizsan.se/2019/06/17/building-in-docker-containers-on-gitlab-ce/)
 *[How to deploy Maven projects to Artifactory with GitLab CI/CD](https://forge.etsi.org/rep/help/ci/examples/artifactory_and_gitlab/index.md)
 *[GitLab-CI Pipeline](https://ishitasinghal08.medium.com/gitlab-ci-pipeline-44996e611fe2)
+https://forge.etsi.org/rep/help/ci/docker/using_docker_build.md
+https://gitlab.com/gitlab-examples/maven/simple-maven-example
+https://www.cnblogs.com/cjsblog/p/12256843.html
+
+
+
+maven:
+https://howtodoinjava.com/maven/maven-parent-child-pom-example/
+
+
+https://spring.io/
+https://github.com/alibaba/transmittable-thread-local#-user-guide
+
+
+组合注解
+https://yanbin.blog/java-spring-meta-annotation/
+https://zhuanlan.zhihu.com/p/95815525
+
+
+java内存模型
+https://www.infoq.cn/article/java-memory-model-1/
+https://zhuanlan.zhihu.com/p/38348646
+https://www.jianshu.com/p/bf158fbb2432
+https://www.jianshu.com/p/76959115d486
+https://zhuanlan.zhihu.com/p/101495810
+
+
+缓存：
+https://github.com/ben-manes/caffeine
+https://github.com/google/guava/wiki/CachesExplained
+
+
+响应式编程
+http://reactivex.io/intro.html
+
+
+https://developer.aliyun.com/article/703059
+蚂蚁金服面对亿级并发场景的组件体系设计

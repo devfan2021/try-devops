@@ -55,6 +55,6 @@ RUN rm -rf ${BASE_DIR}/raftData/
 RUN echo "Command: java ${JAVA_OPTS} -jar ${APP_JAR} ${SPRINGBOOT_OPTS}"
 RUN java ${JAVA_OPTS} -jar ${APP_JAR} ${SPRINGBOOT_OPTS} >> "$STD_OUT" 2>&1 &
 
-EXPOSE 9615 9622 9603
+EXPOSE 9615 9622 9603 9600
 
 ENTRYPOINT [ "sh", "-c", "exec java ${JAVA_OPTS} -jar ${APP_JAR} ${SPRINGBOOT_OPTS}" ]
