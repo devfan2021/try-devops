@@ -1,9 +1,23 @@
+## 目录说明
+
+``` lua
+TRY-DEVOPS
+├── base           -- linux基础及相关安装脚本等
+├── devops-shell   -- linux服务器运维及软件运维等
+├── docker         -- 采用docker方式安装软件
+└── k8s            -- 独立的k8s相关内容
+
+```
+
 ## 待处理问题
 * 根目录下写一个脚本，统一管理各docker容器服务，避免启动所有服务，占用机器资源
 * 监控monitor下的prometheus下config，新增一个脚本，将.evn敏感信息写入prometheus.yml里
 
 
 ## 日志
+
+### 2021-05-20
+* 梳理目录结构
 
 ### 2021-04-20
 * 采用docker部署mysql
