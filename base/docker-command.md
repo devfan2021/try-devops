@@ -42,3 +42,7 @@
 
 #### network
 * **docker inspect [container_id_or_name] -f "{{json .NetworkSettings.Networks }}"**  see what network(s) your container is on
+
+
+####
+* To reload the NGINX configuration, send the HUP signal to Docker: docker kill -s HUP container-name
