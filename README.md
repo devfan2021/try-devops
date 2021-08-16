@@ -16,6 +16,9 @@ TRY-DEVOPS
 
 ## 日志
 
+### 2021-08-16
+* 增加Docker可视化管理工具：portainer
+
 ### 2021-07-17
 * 增加大数据ClickHouse的相关安装及学习资料
 
