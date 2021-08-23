@@ -16,6 +16,9 @@ TRY-DEVOPS
 
 ## 日志
 
+### 2021-08-23
+* 增加在CentOS系统下frp开机自启动
+
 ### 2021-08-16
 * 增加Docker可视化管理工具：portainer
 
