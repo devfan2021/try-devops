@@ -1,6 +1,6 @@
 ## 查看系统信息
 * uname -a
-* cat /etc/redhat-release
+* 查看内核版本：cat /etc/redhat-release
 
 ## 查看服务状态
 * systemctl status docker.service

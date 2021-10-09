@@ -19,3 +19,6 @@ location /mysql/ {
 
 ## 代理请求测试
 * curl --proxy xxx.xxx.xxx.xxx:443 http://xrksudy-test.jryzt.com/xrksudylab9running/gettypes
+
+## 正向代理patch，支持https
+https://github.com/chobits/ngx_http_proxy_connect_module

@@ -26,12 +26,6 @@ yum remove docker \
 yum install -y docker-ce
 ```
 
-* 修改Docker本地镜像与容器的存储位置
-```
-mv /var/lib/docker /data/docker-data
-ln -s /data/docker-data /var/lib/docker
-```
-
 * 启动docker服务
 ```
 systemctl start docker
@@ -39,6 +33,12 @@ systemctl stop docker
 
 systemctl daemon-reload
 systemctl restart docker
+```
+
+* 修改Docker本地镜像与容器的存储位置
+```
+mv /var/lib/docker /data/docker-data
+ln -s /data/docker-data /var/lib/docker
 ```
 
 #### 安装docker-compose

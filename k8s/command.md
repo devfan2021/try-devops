@@ -109,3 +109,17 @@ kubectl get nodes -l node-role.kubernetes.io/master
 ```
 kubectl get nodes -l node-role.kubernetes.io/worker
 ```
+
+
+
+kubectl cluster-info
+kubectl get nodes
+kubectl get pods -n kube-system
+kubectl get pods -n kubernetes-dashboard
+
+## Access Kubernetes dashboard
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
+TOKEN=$(kubectl -n kube-system describe secret default| awk '$1=="token:"{print $2}')
+kubectl config set-credentials docker-for-desktop --token="${TOKEN}"
+echo $TOKEN
