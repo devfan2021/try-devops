@@ -15,6 +15,11 @@ TRY-DEVOPS
 
 
 ## 日志
+### 2021-11-7
+* 增加监控Prometheus和grafana
+* 增加日志服务loki
+* 其他
+
 ### 2021-10-8
 * 调整目录
 * 增加virtual, kvm

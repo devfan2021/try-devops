@@ -1,0 +1,32 @@
+server:
+  http_listen_port: 4080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://localhost:4100/loki/api/v1/push
+
+scrape_configs:
+- job_name: system
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: varlogs
+      __path__: /var/log/*log
+- job_name: wy-system
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: wy
+      __path__: /data/wy-java/logs/*.log
+- job_name: friend-system
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: friend
+      __path__: /data/egg/list-node/logs/list-node/*.log

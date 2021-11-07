@@ -148,7 +148,7 @@ kubeadm init \
 --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers \
 --kubernetes-version v1.20.9 \
 --service-cidr=10.96.0.0/16 \
---pod-network-cidr=192.168.0.0/16
+--pod-network-cidr=172.31.0.0/16
 ```
 
 执行成功后，执行以下语句拷贝相关配置文件

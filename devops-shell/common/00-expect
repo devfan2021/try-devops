@@ -1,0 +1,27 @@
+## Expect介绍
+* Expect是一个用来处理交互的命令,可以使用expect完成ftp和scp登陆的时候密码的自动输入。
+* yum install expect
+
+## 例子
+```
+#!/bin/expect
+
+set timeout 30
+set host "101.200.241.109"
+set username "root"
+set password "123456"
+
+spawn ssh $username@$host
+expect "*password*" {send "$password\r"}
+interact
+```
+
+```
+#!/usr/bin/expect
+
+set timeout 3
+spawn ssh root@xx.xx.xx.xx
+expect "*password*"
+send "xxxx\r"
+interact
+```

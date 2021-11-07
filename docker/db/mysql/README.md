@@ -12,3 +12,6 @@
 ```
 You probably have an anonymous user ''@'localhost' or ''@'127.0.0.1'.
 ```
+
+## 安装教程
+* [Linux安装mysql教程]（https://www.cnblogs.com/lizm166/p/12331208.html）
