@@ -1,0 +1,1 @@
+[10分钟教你学会用 Jenkins +miniprogram-ci 自动生成微信小程序预览二维码](https://www.cnblogs.com/wangpenghui522/p/13969001.html)

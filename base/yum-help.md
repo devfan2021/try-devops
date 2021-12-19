@@ -61,6 +61,9 @@ frontend、backend 是需要手动创建的自定义network (例如：docker net
 yum install java
 yum install maven
 
+## 安装java开发工具包
+* yum install java-devel
+
 
 # cd /etc/yum.repo.d/
 # curl -o epel-7.repo http://mirrors.aliyun.com/repo/epel-7.repo

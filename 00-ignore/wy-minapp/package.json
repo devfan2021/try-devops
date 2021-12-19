@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "wxci": "cross-env node ./wxCI.js"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "miniprogram-ci": "^1.0.93"
+  }
+}

@@ -2,11 +2,11 @@
 
 ```
 将frpc和frpc.ini文件拷贝到对应目录，设置执行权限
-$ sudo cp frpc /usr/bin/frpc
-$ sudo chmod -R 777 /usr/bin/frpc
-$ sudo mkdir /etc/frp
-$ sudo cp frpc.ini /etc/frp/frpc.ini
-$ sudo cp systemd/frpc.service /lib/systemd/system/frpc.service
+sudo cp frpc /usr/bin/frpc
+sudo chmod -R 777 /usr/bin/frpc
+sudo mkdir /etc/frp
+sudo cp frpc.ini /etc/frp/frpc.ini
+sudo cp systemd/frpc.service /lib/systemd/system/frpc.service
 
 #刷新服务列表：
 systemctl daemon-reload
@@ -28,30 +28,22 @@ systemctl status frpc
 [common]
 bind_port = 6000
 dashboard_port = 6500
-auth_token = 12345678
 dashboard_user = xrksudy
 dashboard_pwd = 396498141CBm
-vhost_http_port = 10080
-vhost_https_port = 10443
+vhost_http_port = 8866
+vhost_https_port = 8443
 subdomain_host = devfan.site
-
-[portainer]
-type = http
-auth_token = 12345678
-subdomain = portainer
-
-[kubesphere]
-type = http
-auth_token = 12345678
-subdomain = kubesphere
 
 [ssh]
 type = tcp
 listen_port = 6050
-auth_token = 12345678
+
+[ssh-k8s-master]
+type = tcp
+remote_port = 6051
 
 
-### frp客户端
+### frp客户端1
 [common]
 server_addr = 106.13.16.115
 server_port = 6000
@@ -62,18 +54,34 @@ local_ip = 127.0.0.1
 local_port = 22
 remote_port = 6050
 
-[portainer]
-type = http
-local_port = 9000
-subdomain = portainer
 
-[kubesphere]
+### frp客户端2
+[common]
+server_addr = 106.13.16.115
+server_port = 6000
+
+[ssh-k8s-master]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22
+remote_port = 6051
+
+[kubespherek8smaster]
 type = http
+local_ip = 127.0.0.1
 local_port = 30880
-subdomain = kubesphere
+subdomain = k8s-kubesphere
+
+[dashboardk8smaster]
+type = http
+local_ip = 10.96.231.130
+local_port = 9090
+subdomain = k8s-dashboard
 
 
-## 加入开机启动项
+
+
+## 加入开机启动项--ubuntu
 * /lib/systemd/system/frps.service
 
 [Unit]

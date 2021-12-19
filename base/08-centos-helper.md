@@ -1,3 +1,9 @@
+### 安装工具包
+* yum-config-manager在yum-utils包里
+```
+yum install yum-utils
+```
+
 ### 镜像
 
 * 替换成阿里镜像

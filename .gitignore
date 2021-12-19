@@ -1,4 +1,17 @@
 .DS_Store
+
+## ignore sensitive data
 account.md
 .env
 nginx-dev
+wait-study.md
+host.md
+docker/monitor/guide/promtail-local-config.yml
+docker/monitor/guide/prometheus.yml
+docker/monitor/guide/mysqld_exporter.cnf
+docker/monitor/guide/loki-local-config.yml
+docker/monitor/guide/alertmanager.yml
+docker/db/mysql-master-slave/master-salve.md
+docker/db/mongodb/README.md
+base/09-frp.md
+00-ignore/wy-backend-pipeline.groovy
