@@ -1,0 +1,48 @@
+global:
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+    monitor: 'devfan-monitor'
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 15s
+
+    static_configs:  ## prometheus
+      - targets: ['127.0.0.1:4090']
+        
+  - job_name: 'node_exporter'
+    scrape_interval: 1s
+    file_sd_configs:
+      - files:
+        - prometheus-targets/node-exporter/node*.yml
+        refresh_interval: 10s
+    relabel_configs:
+    - action: replace
+      source_labels: ['__address__']
+      regex: (.*):(.*)
+      replacement: $1
+      target_label: hostname
+    - action: labeldrop
+      regex: __meta_filepath
+      
+  - job_name: 'redis_exporter'
+    scrape_interval: 1s
+    file_sd_configs:
+      - files:
+        - prometheus-targets/redis-exporter/redis*.yml
+    relabel_configs:
+    - action: replace
+      source_labels: ['__address__']
+      regex: (.*):(.*)
+      replacement: $1
+      target_label: hostip
+    - action: labeldrop
+      regex: __meta_filepath

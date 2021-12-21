@@ -6,6 +6,7 @@
 * loki: 3100->4100(http), 9096->4096(grpc)，alertmanager_url: 9093->4093
 * promtail: 9080->4080(http)
 * mysqld_exporter: 9104
+* redis_exporter: 9121->9100
 
 ### 安装prometheus
 * cd /usr/local/devops
@@ -29,8 +30,8 @@
 ### 安装node_exporter
 * cd /usr/local/devops
 * tar -zxvf /data/devops/prometheus/node_exporter-1.2.2.linux-amd64.tar.gz -C /usr/local/devops
-* ln -sv node_exporter-1.2.2.linux-amd64/ node_exporter
-* nohup /usr/local/devops/node_exporter/node_exporter --web.listen-address=:4001 &
+* ln -sv node_exporter-1.2.2.linux-amd64 node_exporter
+* nohup /usr/local/devops/node_exporter/node_exporter --web.listen-address=:4001 > logs/node_exporter.out 2>&1 &
 
 ### 安装loki
 * cd /usr/local/devops
@@ -60,6 +61,12 @@
 --log.level=debug \
 > logs/mysqld_exporter.out 2>&1 &
 
+### 安装redis_exporter
+* cd /usr/local/devops
+* tar -zxvf redis_exporter-v1.33.0.linux-arm64.tar.gz
+* ln -sv redis_exporter-v1.33.0.linux-arm64 redis_exporter
+* nohup /usr/local/devops/redis_exporter/redis_exporter -redis-only-metrics -redis.addr=redis://127.0.0.1:16379 -redis.password-file=/usr/local/devops/redis-exporter-password.json  -web.listen-address=:9100 > logs/redis_exporter.out 2>&1 &
+
 ### 安装alertmanager
 * cd /usr/local/devops
 * tar -zxvf /data/devops/prometheus/alertmanager-0.23.0.linux-amd64.tar.gz -C -C /usr/local/devops
@@ -71,3 +78,7 @@
 
 ## 参考资料
 * [prometheus相关 离线安装](https://blog.csdn.net/qq_36208812/article/details/103513349)
+
+
+## redis监控是监控主节点还是哨兵节点
+* [Prometheus监控 Redis & Redis Cluster](https://www.cnblogs.com/zhoujinyi/p/12189239.html) 不错的思路，节点单独配置文件

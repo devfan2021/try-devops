@@ -6,8 +6,8 @@ account.md
 nginx-dev
 wait-study.md
 host.md
+docker/monitor/guide/prometheus-targets
 docker/monitor/guide/promtail-local-config.yml
-docker/monitor/guide/prometheus.yml
 docker/monitor/guide/mysqld_exporter.cnf
 docker/monitor/guide/loki-local-config.yml
 docker/monitor/guide/alertmanager.yml
