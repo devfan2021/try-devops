@@ -78,6 +78,8 @@
 
 ## 参考资料
 * [prometheus相关 离线安装](https://blog.csdn.net/qq_36208812/article/details/103513349)
+* [腾讯云 Prometheus 监控服务](https://cloud.tencent.com/document/product/1416)
+* [Prometheus基于consul中心自动发现注册监控](https://python.iitter.com/other/10216.html)
 
 
 ## redis监控是监控主节点还是哨兵节点

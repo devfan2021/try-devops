@@ -46,3 +46,17 @@ scrape_configs:
       target_label: hostip
     - action: labeldrop
       regex: __meta_filepath
+  
+  - job_name: 'job-mysql-m' ## mysqld_exporter
+    scrape_interval: 1s
+    file_sd_configs:
+      - files:
+        - prometheus-targets/mysqld-exporter/mysql*.yml
+    relabel_configs:
+    - action: replace
+      source_labels: ['__address__']
+      regex: (.*):(.*)
+      replacement: $1
+      target_label: hostip
+    - action: labeldrop
+      regex: __meta_filepath
