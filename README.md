@@ -17,6 +17,7 @@ TRY-DEVOPS
 ## 日志
 ### 2021-12-22
 * 增加CentOS环境下RabbitMQ的源码安装步骤
+* 增加RabbitMQ内置Prometheus监控
 
 ### 2021-12-23
 * 重新调整监控学习文档目录

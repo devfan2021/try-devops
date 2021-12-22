@@ -75,6 +75,7 @@
 ## 面板模板
 * node_exporter: 11074
 * mysqld_exporter: 7362
+* RabbitMQ-Overview: 10991
 
 ## 参考资料
 * [prometheus相关 离线安装](https://blog.csdn.net/qq_36208812/article/details/103513349)

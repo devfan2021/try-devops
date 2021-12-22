@@ -19,6 +19,7 @@
 * 服务状态：rabbitmqctl status
 * 开启管理界面： rabbitmq-plugins enable rabbitmq_management
 * 登录web管理界面： http://x.x.x.x:15672
+* 开启监控插件：rabbitmq-plugins enable rabbitmq_prometheus
 
 ## RabbitMQ常用几个命令
 * 启动服务：rabbitmq-server -detached

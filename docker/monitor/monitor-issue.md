@@ -13,3 +13,4 @@
 * [prometheus相关 离线安装](https://blog.csdn.net/qq_36208812/article/details/103513349)
 * [腾讯云 Prometheus 监控服务](https://cloud.tencent.com/document/product/1416)
 * [Prometheus基于consul中心自动发现注册监控](https://python.iitter.com/other/10216.html)
+* [Prometheus监控redis及redis-cluster](https://www.lishuai.fun/2020/11/27/prometheus-redis-monitor/)
