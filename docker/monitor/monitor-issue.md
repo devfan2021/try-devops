@@ -9,6 +9,14 @@
 ## redis监控是监控主节点还是哨兵节点
 * [Prometheus监控 Redis & Redis Cluster](https://www.cnblogs.com/zhoujinyi/p/12189239.html) 不错的思路，节点单独配置文件
 
+## Prometheus集群方案
+* [Thanos+prometheus+nacos 整套监控体系](http://www.greatsage01.site/project-11/doc-59/)
+* [Thanos：开源的大规模Prometheus集群解决方案](http://dockone.io/article/6019)
+* [thanos](https://github.com/thanos-io/thanos)
+
+## Prometheus基于注册中心的服务发现（重点待继续查看）
+* [prometheus+nacos](https://github.com/afghanistanyn/prometheus-nacos-sd)
+
 ## 参考资料
 * [prometheus相关 离线安装](https://blog.csdn.net/qq_36208812/article/details/103513349)
 * [腾讯云 Prometheus 监控服务](https://cloud.tencent.com/document/product/1416)
