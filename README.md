@@ -15,6 +15,10 @@ TRY-DEVOPS
 
 
 ## 日志
+### 2021-12-25
+* 增加Nacos监控
+* 基于文件发现的Prometheus监控
+
 ### 2021-12-22
 * 增加CentOS环境下RabbitMQ的源码安装步骤
 * 增加RabbitMQ内置Prometheus监控

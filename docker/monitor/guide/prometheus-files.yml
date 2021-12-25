@@ -13,13 +13,23 @@ scrape_configs:
   - job_name: 'prometheus'
 
     # Override the global default and scrape targets from this job every 5 seconds.
-    scrape_interval: 15s
+    scrape_interval: 30s
 
     static_configs:  ## prometheus
       - targets: ['127.0.0.1:4090']
-        
+  
+  - job_name: 'nacos'
+    # metrics_path defaults to '/metrics'
+    # scheme default to 'http'.
+    metrics_path: '/nacos/actuator/prometheus'
+
+    file_sd_configs:
+      - files:
+        - prometheus-targets/nacos-hosts/nacos*.yml
+        refresh_interval: 60s
+    
   - job_name: 'node_exporter'
-    scrape_interval: 1s
+    scrape_interval: 60s
     file_sd_configs:
       - files:
         - prometheus-targets/node-exporter/node*.yml
@@ -34,7 +44,7 @@ scrape_configs:
       regex: __meta_filepath
       
   - job_name: 'redis_exporter'
-    scrape_interval: 1s
+    scrape_interval: 60s
     file_sd_configs:
       - files:
         - prometheus-targets/redis-exporter/redis*.yml
@@ -48,7 +58,7 @@ scrape_configs:
       regex: __meta_filepath
   
   - job_name: 'job-mysql-m' ## mysqld_exporter
-    scrape_interval: 1s
+    scrape_interval: 60s
     file_sd_configs:
       - files:
         - prometheus-targets/mysqld-exporter/mysql*.yml
@@ -63,6 +73,6 @@ scrape_configs:
 
   - job_name: rabbitmq
     scrape_interval: 60s
-    static_configs:
-    - targets:
-      - 127.0.0.1:15692
+    file_sd_configs:
+      - files:
+        - prometheus-targets/rabbitmq-hosts/rabbitmq*.yml
