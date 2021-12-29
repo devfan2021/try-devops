@@ -15,6 +15,10 @@ TRY-DEVOPS
 
 
 ## 日志
+### 2021-12-29
+* 增加cAdvisor监控容器
+* cAdvisor与Prometheus，Grafana的整合
+
 ### 2021-12-25
 * 增加Nacos监控
 * 基于文件发现的Prometheus监控
