@@ -73,10 +73,13 @@
 * ln -sv alertmanager-0.23.0.linux-amd64/ alertmanager
 
 ## 面板模板
+* [Node Exporter Full](https://grafana.com/grafana/dashboards/1860): 1860  (比较活跃)
 * node_exporter: 11074
 * mysqld_exporter: 7362
 * RabbitMQ-Overview: 10991
 * Docker and system monitoring: 893
+* [Grafana Loki Dashboard for NGINX Service Mesh](https://grafana.com/grafana/dashboards/12559?pg=dashboards&plcmt=featured-dashboard-1): 12559 （待研究）
+* [Fluentd](https://grafana.com/grafana/dashboards/13042): 13042  (待研究)
   
 ## 检查Prometheus配置文件
 * ./promtool check config prometheus.yml
