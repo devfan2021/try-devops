@@ -9,6 +9,9 @@
 * [clickhouse实战之jdbc接入](https://xiaoyue26.github.io/2019/08/25/2019-08/clickhouse%E5%AE%9E%E6%88%98%E4%B9%8Bjdbc%E6%8E%A5%E5%85%A5/)
 * [粗俗理解clickhouse](https://xiaoyue26.github.io/2019/07/06/2019-07/%E7%B2%97%E4%BF%97%E7%90%86%E8%A7%A3clickhouse/)
 
+### 配置问题
+* allow remote access: modify /etc/clickhouse-server/config.xml  uncomment "<listen_host>::</listen_host>"
+* built-in UI:http://xx.xx.xx.xx:8123/play
 
 ### 问题
 * 官方ClickHouse-JDBC对连接池的支持？？

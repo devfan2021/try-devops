@@ -11,7 +11,3 @@ https://itsmetommy.com/2018/05/24/docker-compose-redis-cluster/
 * [Redis主从复制的配置和实现原理](https://juejin.cn/post/6844903943764443149)
 * [Redis Sentinel Documentation](https://redis.io/topics/sentinel)
 * [Redis cluster tutorial](https://redis.io/topics/cluster-tutorial)
-
-
-
-
